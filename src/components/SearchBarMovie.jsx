@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FormLabel, Input, FormControl, Button } from "@chakra-ui/react";
 
-const SearchBarMovie = ({ onSearch }) => {
+const SearchBarMovie = ({ onSearchMovie }) => {
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearchInputChanges = (e) => {
@@ -10,7 +10,7 @@ const SearchBarMovie = ({ onSearch }) => {
 
   const callSearchFunction = (e) => {
     e.preventDefault();
-    onSearch(searchValue);
+    onSearchMovie(searchValue);
     setSearchValue("");
   };
 

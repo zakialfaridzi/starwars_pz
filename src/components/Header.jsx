@@ -19,11 +19,8 @@ const Header = () => {
         mb={10}
       >
         <Text fontSize="3xl" fontWeight="bold">
-          ⚡️Welcome to OpenChakra
+          ⚡️Swapi ProductZilla
         </Text>
-        <Badge variant="subtle" colorScheme="pink" ml={1}>
-          BETA
-        </Badge>
       </Flex>
     </Flex>
   );
