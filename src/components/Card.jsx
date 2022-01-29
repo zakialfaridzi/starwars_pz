@@ -1,5 +1,16 @@
 import { useEffect, useState } from "react";
-import { Box, Center, Heading, Text, Stack, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Text,
+  Stack,
+  Flex,
+  List,
+  SimpleGrid,
+  ListItem,
+  ListIcon,
+} from "@chakra-ui/react";
+import { GiDeathStar } from "react-icons/gi";
 
 export default function Card({ char }) {
   const [movies, setMovies] = useState([]);
@@ -50,13 +61,20 @@ export default function Card({ char }) {
           </Flex>
           <Flex>
             <Text fontWeight={700}>Height: </Text>
-            <Text>&nbsp;{height}</Text>
+            <Text>&nbsp;{height}cm</Text>
           </Flex>
         </Stack>
         <Heading size={"sm"}>Movies:</Heading>
-        {movies.map((movie) => (
-          <li key={movie.title}>{movie.title}</li>
-        ))}
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
+          {movies.map((movie) => (
+            <List spacing={2}>
+              <ListItem>
+                <ListIcon as={GiDeathStar} color="black" />
+                {movie.title}
+              </ListItem>
+            </List>
+          ))}
+        </SimpleGrid>
       </Stack>
     </Box>
   );

@@ -1,4 +1,4 @@
-import { Badge, Flex, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
 
 const Header = () => {
@@ -19,7 +19,7 @@ const Header = () => {
         mb={10}
       >
         <Text fontSize="3xl" fontWeight="bold">
-          ⚡️Swapi ProductZilla
+          🌠Swapi Productzilla🌠
         </Text>
       </Flex>
     </Flex>

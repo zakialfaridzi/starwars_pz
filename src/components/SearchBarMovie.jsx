@@ -17,7 +17,7 @@ const SearchBarMovie = ({ onSearchMovie }) => {
   return (
     <form onSubmit={callSearchFunction}>
       <FormControl w={300}>
-        <FormLabel htmlFor="searchInput">Search Movie</FormLabel>
+        <FormLabel htmlFor="searchInput">Search Movies</FormLabel>
         <Input
           id="searchInput"
           type="text"

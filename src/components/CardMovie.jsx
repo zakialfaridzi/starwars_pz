@@ -1,10 +1,28 @@
 import { useEffect, useState } from "react";
-import { Box, Center, Heading, Text, Stack, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Text,
+  Stack,
+  Flex,
+  SimpleGrid,
+  List,
+  ListItem,
+  ListIcon,
+} from "@chakra-ui/react";
+import { GiDeathStar } from "react-icons/gi";
 
 export default function CardMovie({ mov }) {
   const [chars, setChars] = useState([]);
   const [movieData, setMovieData] = useState([]);
-  const { title, director, characters, release_date } = mov;
+  const {
+    title,
+    director,
+    characters,
+    release_date,
+    episode_id,
+    opening_crawl,
+  } = mov;
 
   const fetchCharacters = async () => {
     try {
@@ -13,7 +31,6 @@ export default function CardMovie({ mov }) {
           fetch(character).then((res) => res.json())
         )
       );
-      //   console.log(response);
       setChars(response);
     } catch (error) {
       console.log("Error", error);
@@ -31,7 +48,7 @@ export default function CardMovie({ mov }) {
 
   return (
     <Box
-      maxW={"445px"}
+      maxW={"full"}
       w={"full"}
       boxShadow={"2xl"}
       rounded={"md"}
@@ -49,7 +66,7 @@ export default function CardMovie({ mov }) {
           Movies
         </Text>
         <Heading fontSize={"2xl"} fontFamily={"body"}>
-          {title}
+          {title} (Eps {episode_id})
         </Heading>
         <Stack direction={"column"} spacing={0} fontSize={"sm"}>
           <Flex>
@@ -62,9 +79,26 @@ export default function CardMovie({ mov }) {
           </Flex>
         </Stack>
         <Heading size={"sm"}>Characters:</Heading>
-        {chars.map((char) => (
-          <li key={char.name}>{char.name}</li>
-        ))}
+        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={5}>
+          {chars.map((char) => (
+            <List spacing={2}>
+              <ListItem>
+                <ListIcon as={GiDeathStar} color="black" />
+                {char.name}
+              </ListItem>
+            </List>
+          ))}
+        </SimpleGrid>
+      </Stack>
+      <Stack mt={6} direction={"row"} spacing={4} align={"center"}>
+        <Stack direction={"column"} spacing={0} fontSize={"sm"}>
+          <Heading size={"sm"} mb={2}>
+            Opener:
+          </Heading>
+          <Text color={"gray.500"} mt={1}>
+            {opening_crawl}
+          </Text>
+        </Stack>
       </Stack>
     </Box>
   );
