@@ -14,7 +14,6 @@ import { GiDeathStar } from "react-icons/gi";
 
 export default function CardMovie({ mov }) {
   const [chars, setChars] = useState([]);
-  const [movieData, setMovieData] = useState([]);
   const {
     title,
     director,
@@ -40,11 +39,6 @@ export default function CardMovie({ mov }) {
   useEffect(() => {
     fetchCharacters();
   }, []);
-
-  useEffect(() => {
-    setMovieData(mov);
-  }, [mov]);
-  console.log(movieData);
 
   return (
     <Box
@@ -82,7 +76,7 @@ export default function CardMovie({ mov }) {
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={5}>
           {chars.map((char) => (
             <List spacing={2}>
-              <ListItem>
+              <ListItem key={char.name}>
                 <ListIcon as={GiDeathStar} color="black" />
                 {char.name}
               </ListItem>

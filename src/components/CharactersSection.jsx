@@ -1,8 +1,10 @@
 import { Box, Flex, Heading, Spinner, Stack } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import Card from "./Card";
 import SearchBar from "./SearchBar";
+
+export const CharactersContext = createContext();
 
 const CharactersSection = () => {
   const [characters, setCharacters] = useState([]);
@@ -58,9 +60,11 @@ const CharactersSection = () => {
           {loading ? (
             <Spinner />
           ) : characters ? (
-            characters.map((characters) => (
-              <Card key={characters.name} char={characters} />
-            ))
+            <CharactersContext.Provider value={characters}>
+              {characters.map((characters) => (
+                <Card key={characters.name} films={characters.films} />
+              ))}
+            </CharactersContext.Provider>
           ) : (
             <h1>No Data.</h1>
           )}
