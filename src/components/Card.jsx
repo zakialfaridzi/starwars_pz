@@ -33,6 +33,7 @@ export default function Card({ films }) {
   }, []);
 
   return char.map((chara) => {
+    const { name, gender, height } = chara;
     return (
       <Box
         maxW={"full"}
@@ -53,17 +54,17 @@ export default function Card({ films }) {
             Characters
           </Text>
           <Heading fontSize={"2xl"} fontFamily={"body"}>
-            {chara.name}
+            {name}
           </Heading>
 
           <Stack direction={"column"} spacing={0} fontSize={"sm"}>
             <Flex>
               <Text fontWeight={700}>Gender: </Text>
-              <Text casing={"capitalize"}>&nbsp;{chara.gender}</Text>
+              <Text casing={"capitalize"}>&nbsp;{gender}</Text>
             </Flex>
             <Flex>
               <Text fontWeight={700}>Height: </Text>
-              <Text>&nbsp;{chara.height}cm</Text>
+              <Text>&nbsp;{height}cm</Text>
             </Flex>
           </Stack>
           <Heading size={"sm"}>Movies:</Heading>
