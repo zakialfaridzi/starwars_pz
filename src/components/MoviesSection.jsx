@@ -1,10 +1,8 @@
+import React, { useEffect, useState } from "react";
 import { Box, Flex, Heading, Spinner, Stack } from "@chakra-ui/react";
 import axios from "axios";
-import React, { createContext, useEffect, useState } from "react";
 import CardMovie from "./CardMovie";
 import SearchBarMovie from "./SearchBarMovie";
-
-export const MoviesContext = createContext();
 
 const MoviesSection = () => {
   const [movies, setMovies] = useState([]);
@@ -61,11 +59,7 @@ const MoviesSection = () => {
           {loadingMovie ? (
             <Spinner />
           ) : movies ? (
-            <MoviesContext.Provider value={movies}>
-              {movies.map((movies) => (
-                <CardMovie key={movies.name} characters={movies.characters} />
-              ))}
-            </MoviesContext.Provider>
+            movies.map((movies) => <CardMovie key={movies.name} mov={movies} />)
           ) : (
             <h1>gaada</h1>
           )}

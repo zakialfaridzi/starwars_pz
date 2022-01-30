@@ -1,10 +1,8 @@
+import React, { useEffect, useState } from "react";
 import { Box, Flex, Heading, Spinner, Stack } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useEffect, useState, createContext } from "react";
 import Card from "./Card";
 import SearchBar from "./SearchBar";
-
-export const CharactersContext = createContext();
 
 const CharactersSection = () => {
   const [characters, setCharacters] = useState([]);
@@ -26,6 +24,7 @@ const CharactersSection = () => {
     setCharacters(searchResults);
     setLoading(false);
   }
+
   return (
     <Box
       backgroundColor="white"
@@ -60,11 +59,9 @@ const CharactersSection = () => {
           {loading ? (
             <Spinner />
           ) : characters ? (
-            <CharactersContext.Provider value={characters}>
-              {characters.map((characters) => (
-                <Card key={characters.name} films={characters.films} />
-              ))}
-            </CharactersContext.Provider>
+            characters.map((characters) => (
+              <Card key={characters.name} char={characters} />
+            ))
           ) : (
             <h1>No Data.</h1>
           )}
